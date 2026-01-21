@@ -23,7 +23,7 @@ import os
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from orchestrator.logger import setup_logger
+from orchestrator.logger import setup_logger, get_transform_logger
 
 
 def enrich_movies(df: pd.DataFrame, logger=None) -> pd.DataFrame:
@@ -49,7 +49,7 @@ def enrich_movies(df: pd.DataFrame, logger=None) -> pd.DataFrame:
         >>> print(enriched_df[['title', 'profit_musd', 'roi']].head())
     """
     if logger is None:
-        logger = setup_logger("enrich", "logs/transform.log")
+        logger = get_transform_logger()
     
     logger.info(f"Starting data enrichment. Input: {len(df)} rows")
     

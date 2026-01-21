@@ -1,0 +1,35 @@
+[2026-01-21 10:00:48] [INFO] [transform] Starting data cleaning. Input: 18 rows, 30 columns
+[2026-01-21 10:00:48] [INFO] [transform] Step 1: Dropping irrelevant columns...
+[2026-01-21 10:00:48] [INFO] [transform]   Dropped 5 columns: ['adult', 'imdb_id', 'original_title', 'video', 'homepage']
+[2026-01-21 10:00:48] [INFO] [transform] Step 2: Parsing JSON-like columns...
+[2026-01-21 10:00:48] [INFO] [transform]   Parsed belongs_to_collection
+[2026-01-21 10:00:48] [INFO] [transform]   Parsed genres
+[2026-01-21 10:00:48] [INFO] [transform]   Parsed spoken_languages
+[2026-01-21 10:00:48] [INFO] [transform]   Parsed production_countries
+[2026-01-21 10:00:48] [INFO] [transform]   Parsed production_companies
+[2026-01-21 10:00:48] [INFO] [transform] Step 3: Converting data types...
+[2026-01-21 10:00:48] [INFO] [transform]   Converted 7 columns to numeric
+[2026-01-21 10:00:48] [INFO] [transform]   Converted release_date to datetime
+[2026-01-21 10:00:48] [INFO] [transform] Step 4: Handling missing and incorrect data...
+[2026-01-21 10:00:48] [INFO] [transform]   Replaced 0 zero values in budget with NaN
+[2026-01-21 10:00:48] [INFO] [transform]   Replaced 0 zero values in revenue with NaN
+[2026-01-21 10:00:48] [INFO] [transform]   Replaced 0 zero values in runtime with NaN
+[2026-01-21 10:00:48] [INFO] [transform]   Created budget_musd and revenue_musd columns
+[2026-01-21 10:00:48] [INFO] [transform] Step 5: Removing duplicates and invalid rows...
+[2026-01-21 10:00:48] [INFO] [transform]   Removed 0 duplicate rows
+[2026-01-21 10:00:48] [INFO] [transform]   Removed 0 rows with missing id or title
+[2026-01-21 10:00:48] [INFO] [transform]   Removed 0 rows with less than 10 non-null values
+[2026-01-21 10:00:48] [INFO] [transform] Step 6: Filtering released movies...
+[2026-01-21 10:00:48] [INFO] [transform]   Kept 18 released movies (removed 0)
+[2026-01-21 10:00:48] [INFO] [transform] Step 7: Reordering columns...
+[2026-01-21 10:00:48] [INFO] [transform] Cleaning complete. Output: 18 rows, 26 columns
+[2026-01-21 10:00:48] [INFO] [transform] Cleaned data saved to: data/processed/movies_cleaned.csv
+[2026-01-21 10:00:48] [INFO] [transform] Starting data enrichment. Input: 18 rows
+[2026-01-21 10:00:48] [INFO] [transform]   Calculated profit for 18 movies
+[2026-01-21 10:00:48] [INFO] [transform]   Calculated ROI for 18 movies
+[2026-01-21 10:00:48] [INFO] [transform]   Extracted release_year and release_month
+[2026-01-21 10:00:48] [INFO] [transform]   Created runtime_category column
+[2026-01-21 10:00:48] [INFO] [transform]   Created is_franchise flag
+[2026-01-21 10:00:48] [INFO] [transform]   Created vote_score (weighted rating) column
+[2026-01-21 10:00:48] [INFO] [transform] Enrichment complete. Output: 18 rows, 33 columns
+[2026-01-21 10:00:48] [INFO] [transform] Enriched data saved to: data/analytics/movies_final.csv

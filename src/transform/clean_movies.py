@@ -28,7 +28,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from src.utils.constants import COLUMNS_TO_DROP, FINAL_COLUMN_ORDER
-from orchestrator.logger import setup_logger
+from orchestrator.logger import setup_logger, get_transform_logger
 
 
 def safe_eval(value: Any) -> Any:
@@ -166,7 +166,7 @@ def clean_movies(df: pd.DataFrame, logger=None) -> pd.DataFrame:
         >>> print(cleaned_df.columns.tolist())
     """
     if logger is None:
-        logger = setup_logger("transform", "logs/transform.log")
+        logger = get_transform_logger()
     
     logger.info(f"Starting data cleaning. Input: {len(df)} rows, {len(df.columns)} columns")
     
