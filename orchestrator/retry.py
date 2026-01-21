@@ -3,21 +3,9 @@ Retry Module
 ============
 Provides retry logic with exponential backoff for handling transient failures.
 
-When making API calls, things can occasionally fail due to:
-- Network issues
-- Rate limiting
-- Server temporary unavailability
-
 This module provides a way to automatically retry failed operations,
 waiting a bit longer between each attempt (exponential backoff).
 
-Usage:
-    from orchestrator.retry import run_with_retry
-    result = run_with_retry(
-        func=lambda: fetch_data_from_api(),
-        retries=3,
-        logger=my_logger,
-        step_name="API Extraction"
     )
 """
 

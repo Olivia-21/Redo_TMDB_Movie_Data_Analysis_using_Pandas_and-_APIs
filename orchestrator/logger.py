@@ -87,6 +87,30 @@ def get_pipeline_logger() -> logging.Logger:
     return setup_logger("pipeline", "logs/pipeline.log")
 
 
+def get_extract_logger() -> logging.Logger:
+    """
+    Get the extract phase logger.
+    
+    This logger writes to logs/extract.log for extraction-specific logging.
+    
+    Returns:
+        logging.Logger: The extract logger
+    """
+    return setup_logger("extract", "logs/extract.log")
+
+
+def get_transform_logger() -> logging.Logger:
+    """
+    Get the transform phase logger.
+    
+    This logger writes to logs/transform.log for transformation-specific logging.
+    
+    Returns:
+        logging.Logger: The transform logger
+    """
+    return setup_logger("transform", "logs/transform.log")
+
+
 # =============================================================================
 # Quick Test (run this file directly to test)
 # =============================================================================

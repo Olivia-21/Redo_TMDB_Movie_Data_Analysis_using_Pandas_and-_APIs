@@ -42,7 +42,7 @@ os.chdir(PROJECT_ROOT)
 # =============================================================================
 # Imports
 # =============================================================================
-from orchestrator.logger import setup_logger, get_pipeline_logger
+from orchestrator.logger import setup_logger, get_pipeline_logger, get_extract_logger, get_transform_logger
 from orchestrator.retry import run_with_retry
 
 from src.utils.constants import MOVIE_IDS
@@ -91,9 +91,12 @@ def main():
     pipeline_logger.info("STEP 1: EXTRACTION")
     pipeline_logger.info("=" * 60)
     
+    # Get the extract-specific logger for detailed extraction logging
+    extract_logger = get_extract_logger()
+    
     # Use retry logic for API extraction
     raw_df = run_with_retry(
-        func=lambda: fetch_movies(MOVIE_IDS, pipeline_logger),
+        func=lambda: fetch_movies(MOVIE_IDS, extract_logger),
         retries=3,
         delay=2.0,
         logger=pipeline_logger,
@@ -101,7 +104,7 @@ def main():
     )
     
     # Save raw data
-    save_raw_data(raw_df, "data/raw/movies_raw.csv", pipeline_logger)
+    save_raw_data(raw_df, "data/raw/movies_raw.csv", extract_logger)
     
     pipeline_logger.info(f"Extraction complete: {len(raw_df)} movies fetched")
     
@@ -112,10 +115,13 @@ def main():
     pipeline_logger.info("STEP 2: TRANSFORMATION - Cleaning")
     pipeline_logger.info("=" * 60)
     
-    cleaned_df = clean_movies(raw_df, pipeline_logger)
+    # Get the transform-specific logger for detailed transformation logging
+    transform_logger = get_transform_logger()
+    
+    cleaned_df = clean_movies(raw_df, transform_logger)
     
     # Save cleaned data
-    save_cleaned_data(cleaned_df, "data/processed/movies_cleaned.csv", pipeline_logger)
+    save_cleaned_data(cleaned_df, "data/processed/movies_cleaned.csv", transform_logger)
     
     pipeline_logger.info(f"Cleaning complete: {len(cleaned_df)} movies after cleaning")
     
@@ -126,10 +132,10 @@ def main():
     pipeline_logger.info("STEP 3: TRANSFORMATION - Enrichment")
     pipeline_logger.info("=" * 60)
     
-    enriched_df = enrich_movies(cleaned_df, pipeline_logger)
+    enriched_df = enrich_movies(cleaned_df, transform_logger)
     
     # Save enriched/final data
-    save_enriched_data(enriched_df, "data/analytics/movies_final.csv", pipeline_logger)
+    save_enriched_data(enriched_df, "data/analytics/movies_final.csv", transform_logger)
     
     pipeline_logger.info(f"Enrichment complete: {len(enriched_df.columns)} columns in final dataset")
     
@@ -252,7 +258,7 @@ def main():
     print(f"  - Cleaned data: data/processed/movies_cleaned.csv")
     print(f"  - Final data:   data/analytics/movies_final.csv")
     print(f"  - Charts:       data/visualizations/")
-    print(f"  - Logs:         logs/pipeline.log")
+    print(f"  - Logs:         logs/pipeline.log, extract.log, transform.log")
     
     return enriched_df
 
