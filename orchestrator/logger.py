@@ -43,9 +43,9 @@ def setup_logger(name: str, log_file: str = None) -> logging.Logger:
         return logger
     
     # Define the log message format
-    # Format: [2024-01-15 10:30:45] [INFO] [extract] Starting extraction...
+    # Format: 2024-01-15 10:30:45 | extract | INFO | Starting extraction...
     formatter = logging.Formatter(
-        fmt="[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s",
+        fmt="%(asctime)s | %(name)s | %(levelname)s | %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S"
     )
     

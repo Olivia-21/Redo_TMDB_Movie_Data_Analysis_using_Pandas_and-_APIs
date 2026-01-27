@@ -27,7 +27,44 @@ import os
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from src.utils.constants import COLUMNS_TO_DROP, FINAL_COLUMN_ORDER
+# =============================================================================
+# Constants
+# =============================================================================
+# Columns to drop from raw data (not needed for analysis)
+COLUMNS_TO_DROP = [
+    'adult',           # Movies are all non-adult in our dataset
+    'imdb_id',         # We use TMDB ID instead
+    'original_title',  # We use 'title' instead
+    'video',           # Not relevant for our analysis
+    'homepage',        # Not needed
+]
+
+# Final column order for cleaned DataFrame
+FINAL_COLUMN_ORDER = [
+    'id',
+    'title',
+    'tagline',
+    'release_date',
+    'genres',
+    'belongs_to_collection',
+    'original_language',
+    'budget_musd',
+    'revenue_musd',
+    'production_companies',
+    'production_countries',
+    'vote_count',
+    'vote_average',
+    'popularity',
+    'runtime',
+    'overview',
+    'spoken_languages',
+    'poster_path',
+    'cast',
+    'cast_size',
+    'director',
+    'crew_size',
+]
+
 from orchestrator.logger import setup_logger, get_transform_logger
 
 

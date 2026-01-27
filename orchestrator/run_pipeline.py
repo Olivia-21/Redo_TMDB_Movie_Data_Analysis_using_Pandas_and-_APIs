@@ -1,22 +1,13 @@
 """
 Run Pipeline - Main Orchestrator
 =================================
-This is the main entry point for the TMDB Movie ETL Pipeline.
-
-Running this script will:
+this script orchestrates the entire ETL pipeline for extracting, transforming,
+analyzing, and visualizing movie data from the TMDB API.
 1. Extract movie data from the TMDB API
 2. Clean and preprocess the data
 3. Enrich with derived metrics (ROI, profit, etc.)
 4. Generate KPI rankings and analysis
 5. Create visualizations
-
-Usage:
-    From the tmdb_movie_pipeline directory:
-    
-    python -m orchestrator.run_pipeline
-    
-    Or run directly:
-    python orchestrator/run_pipeline.py
 """
 
 import sys
@@ -39,14 +30,13 @@ sys.path.insert(0, PROJECT_ROOT)
 # Change to project root for relative paths
 os.chdir(PROJECT_ROOT)
 
-# =============================================================================
+# ===============================================================
 # Imports
-# =============================================================================
-from orchestrator.logger import setup_logger, get_pipeline_logger, get_extract_logger, get_transform_logger
+# =============================================================
+from orchestrator.logger import get_pipeline_logger, get_extract_logger, get_transform_logger
 from orchestrator.retry import run_with_retry
 
-from src.utils.constants import MOVIE_IDS
-from src.extract.fetch_movies import fetch_movies, save_raw_data
+from src.extract.fetch_movies import fetch_movies, save_raw_data, MOVIE_IDS
 from src.transform.clean_movies import clean_movies, save_cleaned_data
 from src.transform.enrich_movies import enrich_movies, save_enriched_data
 from src.analysis.kpi_rankings import get_all_rankings, print_all_rankings

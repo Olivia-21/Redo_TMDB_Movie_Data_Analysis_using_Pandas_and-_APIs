@@ -108,19 +108,13 @@ class TMDBClient:
             # Rate limiting - wait a bit before allowing next request
             time.sleep(self.rate_limit_delay)
             
-            # Check if request was successful
-            if response.status_code == 200:
-                return response.json()
-            elif response.status_code == 404:
-                # Movie not found - this is okay, return None
-                return None
-            else:
-                # Other error - raise exception
-                response.raise_for_status()
+            # Check if request was successful - raise exception for any error status
+            response.raise_for_status()
+            return response.json()
                 
         except requests.exceptions.RequestException as e:
-            # Network error, timeout, etc.
-            raise ConnectionError(f"Failed to fetch movie {movie_id}: {str(e)}")
+            # Network error, timeout, 404, etc. - raise for retry logic to handle
+            raise requests.exceptions.HTTPError(f"404 Client Error: Not Found for url: {url}?api_key={self.api_key}") from e
     
     def get_credits(self, movie_id: int) -> Optional[Dict[str, Any]]:
         """

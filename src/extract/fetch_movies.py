@@ -9,8 +9,7 @@ This module is responsible for:
 - Combining all data into a pandas DataFrame
 
 Usage:
-    from src.extract.fetch_movies import fetch_movies
-    from src.utils.constants import MOVIE_IDS
+    from src.extract.fetch_movies import fetch_movies, MOVIE_IDS
     
     raw_df = fetch_movies(MOVIE_IDS)
 """
@@ -28,6 +27,32 @@ from orchestrator.logger import setup_logger, get_extract_logger
 
 # Import retry logic
 from orchestrator.retry import run_with_retry
+
+
+# =============================================================================
+# Constants (Movie IDs to fetch from TMDB API)
+# =============================================================================
+MOVIE_IDS = [
+    0,        
+    299534,   
+    19995,    
+    140607,   
+    299536,   
+    597,      
+    135397,   
+    420818,   
+    24428,    
+    168259,   
+    99861,    
+    284054,   
+    12445,    
+    181808,   
+    330457,   
+    351286,   
+    109445,  
+    321612,   
+    260513,   
+]
 
 
 def fetch_movies(movie_ids: List[int], logger=None) -> pd.DataFrame:
@@ -73,7 +98,6 @@ def fetch_movies(movie_ids: List[int], logger=None) -> pd.DataFrame:
     # Fetch each movie
     # -------------------------------------------------------------------------
     # Helper function to create fetch functions that capture movie_id by value
-    # This fixes the Python closure issue where lambda captures variable by reference
     def make_movie_fetcher(mid):
         """Create a function that fetches movie details for a specific ID."""
         return lambda: client.get_movie(mid)
@@ -84,29 +108,33 @@ def fetch_movies(movie_ids: List[int], logger=None) -> pd.DataFrame:
     
     for i, movie_id in enumerate(movie_ids, 1):
         try:
-            logger.info(f"Fetching movie {i}/{len(movie_ids)} (ID: {movie_id})...")
+            logger.info(f"Fetching movie ID: {movie_id}")
 
             # Retry fetching movie details using the helper to capture movie_id correctly
             movie = run_with_retry(
                 func=make_movie_fetcher(movie_id),
                 retries=3,
-                delay=2.0,
+                delay=1.0,
                 logger=logger,
-                step_name=f"Fetch Movie ID {movie_id}"
+                step_name=f"Fetch Movie ID {movie_id}",
+                movie_id=movie_id
             )
 
             if movie is None:
-                logger.warning(f"Movie ID {movie_id} not found, skipping...")
                 failed_ids.append(movie_id)
                 continue
+
+            # Log success with movie title
+            logger.info(f"Successfully fetched: {movie.get('title', 'Unknown')}")
 
             # Retry fetching movie credits (cast and crew) using the helper
             credits = run_with_retry(
                 func=make_credits_fetcher(movie_id),
                 retries=3,
-                delay=2.0,
+                delay=1.0,
                 logger=logger,
-                step_name=f"Fetch Credits for Movie ID {movie_id}"
+                step_name=f"Fetch Credits for Movie ID {movie_id}",
+                movie_id=movie_id
             )
 
             # Extract cast information

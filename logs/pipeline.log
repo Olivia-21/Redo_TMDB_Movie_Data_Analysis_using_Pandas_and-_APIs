@@ -1,69 +1,77 @@
-[2026-01-21 10:00:10] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:10] [INFO] [pipeline] TMDB Movie ETL Pipeline Started
-[2026-01-21 10:00:10] [INFO] [pipeline] Start Time: 2026-01-21 10:00:10
-[2026-01-21 10:00:10] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:10] [INFO] [pipeline] 
+2026-01-27 10:14:01 | pipeline | INFO | ============================================================
+2026-01-27 10:14:01 | pipeline | INFO | TMDB Movie ETL Pipeline Started
+2026-01-27 10:14:01 | pipeline | INFO | Start Time: 2026-01-27 10:14:01
+2026-01-27 10:14:01 | pipeline | INFO | ============================================================
+2026-01-27 10:14:01 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:10] [INFO] [pipeline] STEP 1: EXTRACTION
-[2026-01-21 10:00:10] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:10] [INFO] [pipeline] API Extraction: Attempt 1/3
-[2026-01-21 10:00:48] [INFO] [pipeline] API Extraction: Completed successfully
-[2026-01-21 10:00:48] [INFO] [pipeline] Extraction complete: 18 movies fetched
-[2026-01-21 10:00:48] [INFO] [pipeline] 
+2026-01-27 10:14:01 | pipeline | INFO | STEP 1: EXTRACTION
+2026-01-27 10:14:01 | pipeline | INFO | ============================================================
+2026-01-27 10:14:01 | pipeline | INFO | Attempt 1 of 3
+2026-01-27 10:14:47 | pipeline | INFO | Extraction complete: 18 movies fetched
+2026-01-27 10:14:47 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] STEP 2: TRANSFORMATION - Cleaning
-[2026-01-21 10:00:48] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] Cleaning complete: 18 movies after cleaning
-[2026-01-21 10:00:48] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | STEP 2: TRANSFORMATION - Cleaning
+2026-01-27 10:14:47 | pipeline | INFO | ============================================================
+2026-01-27 10:14:47 | pipeline | INFO | Cleaning complete: 18 movies after cleaning
+2026-01-27 10:14:47 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] STEP 3: TRANSFORMATION - Enrichment
-[2026-01-21 10:00:48] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] Enrichment complete: 33 columns in final dataset
-[2026-01-21 10:00:48] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | STEP 3: TRANSFORMATION - Enrichment
+2026-01-27 10:14:47 | pipeline | INFO | ============================================================
+2026-01-27 10:14:47 | pipeline | INFO | Enrichment complete: 33 columns in final dataset
+2026-01-27 10:14:47 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] STEP 4: ANALYSIS
-[2026-01-21 10:00:48] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:48] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | STEP 4: ANALYSIS
+2026-01-27 10:14:47 | pipeline | INFO | ============================================================
+2026-01-27 10:14:47 | pipeline | INFO | 
 --- KPI Rankings ---
-[2026-01-21 10:00:48] [INFO] [pipeline] Generating all KPI rankings...
-[2026-01-21 10:00:48] [INFO] [pipeline] Generated 10 ranking tables
-[2026-01-21 10:00:49] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | Generating all KPI rankings...
+2026-01-27 10:14:47 | pipeline | INFO | Generated 10 ranking tables
+2026-01-27 10:14:47 | pipeline | INFO | 
 --- Advanced Searches ---
-[2026-01-21 10:00:49] [INFO] [pipeline] Search 1: Finding Sci-Fi Action movies with Bruce Willis...
-[2026-01-21 10:00:49] [INFO] [pipeline]   Found 0 matching movies
-[2026-01-21 10:00:49] [INFO] [pipeline] Search 2: Finding Uma Thurman movies directed by Tarantino...
-[2026-01-21 10:00:49] [INFO] [pipeline]   Found 0 matching movies
-[2026-01-21 10:00:49] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | Search 1: Finding Sci-Fi Action movies with Bruce Willis...
+2026-01-27 10:14:47 | pipeline | INFO |   Found 0 matching movies
+2026-01-27 10:14:47 | pipeline | INFO | Search 2: Finding Uma Thurman movies directed by Tarantino...
+2026-01-27 10:14:47 | pipeline | INFO |   Found 0 matching movies
+2026-01-27 10:14:47 | pipeline | INFO | 
 --- Franchise Analysis ---
-[2026-01-21 10:00:49] [INFO] [pipeline] Comparing franchise vs standalone movies...
-[2026-01-21 10:00:49] [INFO] [pipeline]   Franchise movies: 16
-[2026-01-21 10:00:49] [INFO] [pipeline]   Standalone movies: 2
-[2026-01-21 10:00:49] [INFO] [pipeline] Franchise vs standalone comparison complete
-[2026-01-21 10:00:49] [INFO] [pipeline] Finding top franchises...
-[2026-01-21 10:00:49] [INFO] [pipeline] Found 10 top franchises
-[2026-01-21 10:00:49] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | Comparing franchise vs standalone movies...
+2026-01-27 10:14:47 | pipeline | INFO |   Franchise movies: 16
+2026-01-27 10:14:47 | pipeline | INFO |   Standalone movies: 2
+2026-01-27 10:14:47 | pipeline | INFO | Franchise vs standalone comparison complete
+2026-01-27 10:14:47 | pipeline | INFO | Finding top franchises...
+2026-01-27 10:14:47 | pipeline | INFO | Found 10 top franchises
+2026-01-27 10:14:47 | pipeline | INFO | 
 --- Director Analysis ---
-[2026-01-21 10:00:49] [INFO] [pipeline] Finding top directors...
-[2026-01-21 10:00:49] [INFO] [pipeline] Found 10 top directors (with >= 1 movies)
-[2026-01-21 10:00:49] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | Finding top directors...
+2026-01-27 10:14:47 | pipeline | INFO | Found 10 top directors (with >= 1 movies)
+2026-01-27 10:14:47 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:49] [INFO] [pipeline] STEP 5: VISUALIZATION
-[2026-01-21 10:00:49] [INFO] [pipeline] ============================================================
-[2026-01-21 10:00:49] [INFO] [pipeline] Creating all visualizations in data/visualizations...
-[2026-01-21 10:00:49] [INFO] [pipeline] Creating Revenue vs Budget plot...
-[2026-01-21 10:00:49] [INFO] [pipeline]   Saved to: data/visualizations\revenue_vs_budget.png
-[2026-01-21 10:00:49] [INFO] [pipeline] Creating ROI by Genre plot...
-[2026-01-21 10:00:49] [INFO] [pipeline]   Saved to: data/visualizations\roi_by_genre.png
-[2026-01-21 10:00:49] [INFO] [pipeline] Creating Popularity vs Rating plot...
-[2026-01-21 10:00:50] [INFO] [pipeline]   Saved to: data/visualizations\popularity_vs_rating.png
-[2026-01-21 10:00:50] [INFO] [pipeline] Creating Yearly Trends plot...
-[2026-01-21 10:00:50] [INFO] [pipeline]   Saved to: data/visualizations\yearly_trends.png
-[2026-01-21 10:00:50] [INFO] [pipeline] Creating Franchise Comparison plot...
-[2026-01-21 10:00:50] [INFO] [pipeline]   Saved to: data/visualizations\franchise_comparison.png
-[2026-01-21 10:00:50] [INFO] [pipeline] Created 5 visualizations
-[2026-01-21 10:00:50] [INFO] [pipeline] 
+2026-01-27 10:14:47 | pipeline | INFO | STEP 5: VISUALIZATION
+2026-01-27 10:14:47 | pipeline | INFO | ============================================================
+2026-01-27 10:14:47 | pipeline | INFO | Creating all visualizations in data/visualizations...
+2026-01-27 10:14:47 | pipeline | INFO | Creating Revenue vs Budget plot...
+2026-01-27 10:14:48 | pipeline | INFO |   Saved to: data/visualizations\revenue_vs_budget.png
+2026-01-27 10:14:48 | pipeline | INFO | Creating ROI by Genre plot...
+2026-01-27 10:14:49 | pipeline | INFO |   Saved to: data/visualizations\roi_by_genre.png
+2026-01-27 10:14:49 | pipeline | INFO | Creating Popularity vs Rating plot...
+2026-01-27 10:14:49 | pipeline | INFO |   Saved to: data/visualizations\popularity_vs_rating.png
+2026-01-27 10:14:49 | pipeline | INFO | Creating Yearly Trends plot...
+2026-01-27 10:14:49 | pipeline | INFO |   Saved to: data/visualizations\yearly_trends.png
+2026-01-27 10:14:49 | pipeline | INFO | Creating Franchise Comparison plot...
+2026-01-27 10:14:50 | pipeline | INFO |   Saved to: data/visualizations\franchise_comparison.png
+2026-01-27 10:14:50 | pipeline | INFO | Created 5 visualizations
+2026-01-27 10:14:50 | pipeline | INFO | 
 ============================================================
-[2026-01-21 10:00:50] [INFO] [pipeline] PIPELINE COMPLETED SUCCESSFULLY
-[2026-01-21 10:00:50] [INFO] [pipeline] End Time: 2026-01-21 10:00:50
-[2026-01-21 10:00:50] [INFO] [pipeline] Duration: 0:00:40.216211
-[2026-01-21 10:00:50] [INFO] [pipeline] ============================================================
+2026-01-27 10:14:50 | pipeline | INFO | PIPELINE COMPLETED SUCCESSFULLY
+2026-01-27 10:14:50 | pipeline | INFO | End Time: 2026-01-27 10:14:50
+2026-01-27 10:14:50 | pipeline | INFO | Duration: 0:00:48.969692
+2026-01-27 10:14:50 | pipeline | INFO | ============================================================
+2026-01-27 10:47:28 | pipeline | INFO | ============================================================
+2026-01-27 10:47:28 | pipeline | INFO | TMDB Movie ETL Pipeline Started
+2026-01-27 10:47:28 | pipeline | INFO | Start Time: 2026-01-27 10:47:28
+2026-01-27 10:47:28 | pipeline | INFO | ============================================================
+2026-01-27 10:47:28 | pipeline | INFO | 
+============================================================
+2026-01-27 10:47:28 | pipeline | INFO | STEP 1: EXTRACTION
+2026-01-27 10:47:28 | pipeline | INFO | ============================================================
+2026-01-27 10:47:28 | pipeline | INFO | Attempt 1 of 3

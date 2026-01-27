@@ -30,7 +30,12 @@ import os
 # Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from src.utils.constants import MIN_BUDGET_FOR_ROI, MIN_VOTES_FOR_RATING
+# =============================================================================
+# Constants
+# =============================================================================
+MIN_BUDGET_FOR_ROI = 10_000_000  # $10M minimum for ROI analysis
+MIN_VOTES_FOR_RATING = 10        # Minimum votes for rating analysis
+
 from orchestrator.logger import setup_logger
 
 
